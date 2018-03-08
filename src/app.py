@@ -14,7 +14,7 @@ connect('testdb')
 
 #Local class
 from forms import Login, SearchForm
-from company import Companies
+from company import company
 
 app = Flask(__name__)  # Setting up the flask application
 
@@ -90,7 +90,7 @@ def search():
     if request.args.get('search'):
         search = request.args.get('search')
         page = int(request.args.get('page',1))
-        url = "http://localhost:9200/chrunchbase/company/_search"
+        url = "http://localhost:9200/crunchbase/company/_search"
         querystring = {"q":search, "size":10, "from": (page*10)-10}
         response = requests.request("GET", url, params=querystring)
         data = response.json()
@@ -104,11 +104,10 @@ def search():
 @app.route('/company/<string:id>/')
 @is_logged_in
 def details(id):
-    company = company.objects.get(id = id)
-    print(company.description)
-    return render_template('company_details.html', result = company)
+    comp = company.objects.get(id = id)
+    return render_template('company_details.html', result = comp)
 
 
 if __name__ == '__main__' :
     app.secret_key='demo123'
-    app.run(host='0.0.0.0', port=5000,debug = True)
+    app.run(host='0.0.0.0', port=5000,debug = False)
