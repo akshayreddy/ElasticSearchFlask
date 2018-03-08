@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+{% from "includes/_formhelpers.html" import render_field %}
+<form method="GET" action="">
+  <div class="form-group">
+    {{render_field(form.search, class_="form-control")}}
+    <small id="searchHelp" class="form-text text-muted"><b>Example Keywords:</b> Google, software, enterprise, 1996</small>
+  </div>
+  <p><input type="submit" class="btn btn-primary" value="Go"></p>
+</form>
+
+{% if hits %}
+<h4>{{hits}} results found..</h4>
+
+<table class="table table-striped">
+  <tbody>
+    {% for i in result %}
+    <tr>
+      <td> <a href="/company/{{i._id}}">{{i._source.name}}</a> </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+  {% for p in pages %}
+    <li class="page-item"><a class="page-link" href="/search?search={{q}}&page={{p}}">{{p}}</a></li>
+  {% endfor %}
+  </ul>
+</nav>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  <div class="container">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td> Company Name </td>
+          <td> {{result.name}} </td>
+        </tr>
+        <tr>
+          <td> Company Desrciption </td>
+          <td> {{result.description}} </td>
+        </tr>
+        <tr>
+          <td> Company Founded Year </td>
+          <td> {{result.founded_year}} </td>
+        </tr>
+        <tr>
+          <td> Number of Employees </td>
+          <td> {{result.number_of_employees}} </td>
+        </tr>
+        <tr>
+          <td> Email </td>
+          <td> <a href="{{result.homepage_url}}">{{result.email_address}}</a></td>
+        </tr>
+        <tr>
+          <td> Home URL </td>
+          <td> <a href="{{result.homepage_url}}">{{result.homepage_url}} </a> </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+
+
+{% endblock %}

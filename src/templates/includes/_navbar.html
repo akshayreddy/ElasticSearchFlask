@@ -1,0 +1,19 @@
+<nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand">Elastic Search</a>
+        </div>
+          {% if session.logged_in %}
+          <ul class="navbar-nav mr-auto">
+            <li><a href="/search">Dashboard</a></li>
+         </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout">Logout</a></li>
+         </ul>
+         {% else %}
+          <ul class="nav navbar-nav navbar-right">
+            <li><button type="button" class="btn btn-dark">GitHub</button></li>
+          </ul>
+         {% endif %}
+      </div>
+</nav>

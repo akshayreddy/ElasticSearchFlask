@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="jumbotron text-center">
+    <h1>Elastic Search - A Flask Application</h1>
+    <p class="lead">Indexing the startup company details and building a search engine using ElasticSearch Framework</p>
+<div>
+
+  {% from "includes/_formhelpers.html" import render_field %}
+  <form method="POST" action="">
+    <div class="form-group">
+      {{render_field(form.username, class_="form-control")}}
+      <small>use: demo</small>
+    </div>
+    <div class="form-group">
+      {{render_field(form.password, class_="form-control")}}
+      <small>use: demo123</small>
+    </div>
+    <p><input type="submit" class="btn btn-primary" value="Login"></p>
+  </form>
+
+{{message}}
+
+{% endblock %}
